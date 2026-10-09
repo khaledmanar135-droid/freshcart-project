@@ -2,6 +2,7 @@ import {NextAuthOptions} from 'next-auth';
 import { jwtDecode } from "jwt-decode";
 import Credentials from 'next-auth/providers/credentials'
 export const authOption:NextAuthOptions ={
+    secret: process.env.NEXTAUTH_SECRET,
     providers:[
         Credentials({
             name:'login',

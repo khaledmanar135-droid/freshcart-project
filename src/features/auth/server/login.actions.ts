@@ -5,9 +5,11 @@ export interface ILogin{
   email:string
 }
 
+const BASE_URL = process.env.BASE_URL || 'https://ecommerce.routemisr.com/api/v1';
+
 export async function SignIn(payload:ILogin){
 
-   const response =await fetch(`${process.env.BASE_URL}/auth/signin`,{
+   const response =await fetch(`${BASE_URL}/auth/signin`,{
     method:'POST',
     body:JSON.stringify(payload),
     headers:{

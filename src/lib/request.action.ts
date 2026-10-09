@@ -2,9 +2,11 @@
 
 import { getMyToken } from '@/features/auth/server/token.actions'
 
+const BASE_URL = process.env.BASE_URL || 'https://ecommerce.routemisr.com/api/v1';
+
 export async function request(path:string,options:RequestInit={}){
   const token=await getMyToken()
-  const response=await fetch(`${process.env.BASE_URL}${path}`,{
+  const response=await fetch(`${BASE_URL}${path}`,{
     ...options,
     cache:'no-store',
     headers:{
