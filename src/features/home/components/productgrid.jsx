@@ -1,9 +1,9 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query';
-import ProductCard from '../ProductCard/ProductCard';
-import { getProducts } from '../../services/products';
-import { toCardProduct } from '../../lib/product';
+import ProductCard from '@/features/products/components/productcard';
+import { getProducts } from '@/features/products/server/products.actions';
+import { toCardProduct } from '@/features/products/utils/product.mapper';
 
 export default function ProductGrid() {
   const { data, isLoading, isError, refetch } = useQuery({
@@ -43,3 +43,4 @@ export default function ProductGrid() {
     </section>
   );
 }
+

@@ -1,5 +1,3 @@
 'use server'
-import { request } from './request.action'
-export async function getSubCategories(){return request('/subcategories')}
-export async function getSubCategory(id){return request(`/subcategories/${id}`)}
-export async function getSubCategoriesOnCategory(categoryId){return request(`/categories/${categoryId}/subcategories`)}
+import * as actions from '@/features/categories/server/subcategories.actions'
+export async function getSubcategories(params = {}) { return actions.getSubcategories(params) }

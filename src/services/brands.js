@@ -1,4 +1,4 @@
 'use server'
-import { request } from './request.action'
-export async function getBrands(params={}){const q=new URLSearchParams(params).toString();return request(`/brands${q?`?${q}`:''}`)}
-export async function getBrand(id){return request(`/brands/${id}`)}
+import * as actions from '@/features/brands/server/brands.actions'
+export async function getBrands(params = {}) { return actions.getBrands(params) }
+export async function getBrand(id) { return actions.getBrand(id) }

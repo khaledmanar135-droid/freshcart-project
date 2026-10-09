@@ -1,9 +1,9 @@
 'use client'
 
-import { Link } from '@/components/NextRouter';
+import { Link } from '@/lib/nextrouter';
 import { useQuery } from '@tanstack/react-query';
 const arrowRightIcon = '/freshcart/assets/icons/categories/arrow-right.svg';
-import { getCategories } from '../../services/categories';
+import { getCategories } from '@/features/categories/server/categories.actions';
 
 export default function Categories() {
   const { data, isLoading, isError } = useQuery({
@@ -64,3 +64,4 @@ export default function Categories() {
     </section>
   );
 }
+

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react';
-import StarRating from '../StarRating/StarRating';
+import StarRating from '@/components/ui/starrating';
 const detailsIcon = '/freshcart/assets/icons/product-tabs/details.svg';
 const starIcon = '/freshcart/assets/icons/product-tabs/star.svg';
 const shippingIcon = '/freshcart/assets/icons/product-tabs/shipping.svg';
@@ -129,3 +129,4 @@ export default function ProductTabs({ product }) {
     </div>
   );
 }
+

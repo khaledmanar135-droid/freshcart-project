@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react';
-import { useNavigate } from '@/components/NextRouter';
-import StarRating from '../StarRating/StarRating';
-import { useCart } from '../../hooks/useCart';
-import { useWishlist } from '../../hooks/useWishlist';
+import { useNavigate } from '@/lib/nextrouter';
+import StarRating from '@/components/ui/starrating';
+import { useCart } from '@/hooks/useCart';
+import { useWishlist } from '@/hooks/useWishlist';
 const decreaseIcon = '/freshcart/assets/icons/pdp/decrease.svg';
 const increaseIcon = '/freshcart/assets/icons/pdp/increase.svg';
 const cartIcon = '/freshcart/assets/icons/pdp/cart-white.svg';
@@ -161,3 +161,5 @@ export default function ProductInfo({ product }) {
     </div>
   );
 }
+
+

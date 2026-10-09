@@ -1,8 +1,1 @@
-export interface Category {
-  _id: string
-  name: string
-  slug: string
-  image: string
-  createdAt: string
-  updatedAt: string
-}
+export * from '@/features/categories/types/category.type';

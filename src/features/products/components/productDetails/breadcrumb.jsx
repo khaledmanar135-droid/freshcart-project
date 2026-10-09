@@ -1,6 +1,6 @@
 'use client'
 
-import { Link } from '@/components/NextRouter';
+import { Link } from '@/lib/nextrouter';
 const homeIcon = '/freshcart/assets/icons/breadcrumb/home.svg';
 const chevronIcon = '/freshcart/assets/icons/breadcrumb/chevron.svg';
 export default function Breadcrumb({ category, categoryId, subcategory, productName }) {
@@ -41,3 +41,4 @@ export default function Breadcrumb({ category, categoryId, subcategory, productN
     </nav>
   );
 }
+

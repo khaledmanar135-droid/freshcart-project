@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react';
-import ProductCard from '../ProductCard/ProductCard';
+import ProductCard from '../productcard';
 const arrowPrev = '/freshcart/assets/icons/hero/arrow-prev.svg';
 const arrowNext = '/freshcart/assets/icons/hero/arrow-next.svg';
 export default function RelatedProducts({ products }) {
@@ -39,3 +39,4 @@ export default function RelatedProducts({ products }) {
     </section>
   );
 }
+

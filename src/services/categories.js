@@ -1,4 +1,4 @@
 'use server'
-import { request } from './request.action'
-export async function getCategories(params={}){const q=new URLSearchParams(params).toString();return request(`/categories${q?`?${q}`:''}`)}
-export async function getCategory(id){return request(`/categories/${id}`)}
+import * as actions from '@/features/categories/server/categories.actions'
+export async function getCategories(params = {}) { return actions.getCategories(params) }
+export async function getCategory(id) { return actions.getCategory(id) }

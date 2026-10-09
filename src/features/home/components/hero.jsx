@@ -1,7 +1,7 @@
 'use client'
 
 import { Fragment, useEffect, useRef, useState } from 'react';
-import { Link } from '@/components/NextRouter';
+import { Link } from '@/lib/nextrouter';
 const arrowPrev = '/freshcart/assets/icons/hero/arrow-prev.svg';
 const arrowNext = '/freshcart/assets/icons/hero/arrow-next.svg';
 // Each title is written once. `{ br: … }` marks where the line breaks on a
@@ -145,3 +145,4 @@ export default function Hero() {
     </section>
   );
 }
+
