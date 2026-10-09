@@ -1,0 +1,24 @@
+.star-rating {
+  position: relative;
+  display: inline-flex;
+}
+
+.star-rating__track,
+.star-rating__fill {
+  display: flex;
+  align-items: center;
+}
+
+.star-rating__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.star-rating__star {
+  width: 20px;
+  height: 16px;
+  flex-shrink: 0;
+}

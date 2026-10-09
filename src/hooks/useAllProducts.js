@@ -1,0 +1,33 @@
+'use client'
+
+import { useQuery } from '@tanstack/react-query';
+import { getProducts } from '../services/products';
+import { toCardProduct } from '../lib/product';
+
+const PAGE_LIMIT = 50;
+
+/**
+ * The store API has no keyword search, so the search page loads the whole
+ * catalog once (2 pages of 50) and filters in the browser.
+ */
+export function useAllProducts() {
+  return useQuery({
+    queryKey: ['products', 'catalog'],
+    staleTime: 5 * 60 * 1000,
+    queryFn: async () => {
+      const first = await getProducts({ limit: PAGE_LIMIT, page: 1 });
+      const pages = first.data?.metadata?.numberOfPages ?? 1;
+      let raw = first.data?.data ?? [];
+
+      if (pages > 1) {
+        const rest = await Promise.all(
+          Array.from({ length: pages - 1 }, (_, i) =>
+            getProducts({ limit: PAGE_LIMIT, page: i + 2 })),
+        );
+        raw = raw.concat(...rest.map((res) => res.data?.data ?? []));
+      }
+
+      return raw.map(toCardProduct);
+    },
+  });
+}

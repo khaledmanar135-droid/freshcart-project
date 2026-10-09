@@ -1,0 +1,123 @@
+.all-products__banner {
+  background: linear-gradient(90deg, #16a34a 0%, #15803d 100%);
+  color: #fff;
+}
+
+.all-products__banner-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 24px var(--container-padding) 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.all-products__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.all-products__breadcrumb a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.all-products__breadcrumb a:hover {
+  color: #fff;
+}
+
+.all-products__breadcrumb-current {
+  color: #fff;
+}
+
+.all-products__heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.all-products__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.all-products__icon img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+}
+
+.all-products__title {
+  font-size: 32px;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.all-products__subtitle {
+  margin-top: 4px;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.all-products__body {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 24px var(--container-padding) 48px;
+}
+
+.all-products__count {
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.all-products__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 1279px) {
+  .all-products__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1023px) {
+  .all-products__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .all-products__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .all-products__title {
+    font-size: 24px;
+  }
+
+  .all-products__subtitle {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 400px) {
+  .all-products__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,104 @@
+.trust-badges {
+  background: var(--color-primary-50);
+  padding: 24px var(--container-padding);
+}
+
+.trust-badges__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.trust-badges__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 220px;
+  min-width: 220px;
+}
+
+.trust-badges__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.trust-badges__icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.trust-badges__title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-strong, #101828);
+}
+
+.trust-badges__subtitle {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 900px) {
+  .trust-badges__inner {
+    justify-content: flex-start;
+  }
+
+  .trust-badges__item {
+    flex: 1 1 45%;
+  }
+}
+
+@media (max-width: 500px) {
+  .trust-badges__item {
+    flex: 1 1 100%;
+  }
+}
+
+/* Figma "Home Page - Mobile" node 15:2096 — vertical single-column list */
+@media (max-width: 640px) {
+  .trust-badges {
+    padding: 25px 16px;
+    border-top: 1px solid var(--color-primary-100);
+    border-bottom: 1px solid var(--color-primary-100);
+  }
+
+  .trust-badges__inner {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 24px;
+  }
+
+  .trust-badges__item {
+    flex: unset;
+    min-width: 0;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .trust-badges__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--color-primary-100);
+  }
+
+  .trust-badges__icon img {
+    width: 22px;
+    height: 18px;
+  }
+}

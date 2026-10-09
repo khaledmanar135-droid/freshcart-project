@@ -1,0 +1,44 @@
+:root {
+  /* Brand */
+  --color-primary: #16a34a;
+  --color-primary-dark: #15803d;
+  --color-primary-50: #f0fdf4;
+  --color-primary-100: #dcfce7;
+
+  /* Hero accent (Figma "spring green" gradient/CTA color) */
+  --color-spring-green: #00c950;
+  --color-spring-green-light: #05df72;
+
+  /* Accent tints (icon badge backgrounds, etc.) */
+  --color-danger-50: #fef2f2;
+  --color-success-50: #ecfdf5;
+
+  /* Text */
+  --color-text-dark: #1e2939;
+  --color-text-body: #4a5565;
+  --color-text-muted: #6a7282;
+  --color-text-heading: #364153;
+  --color-text-faint: #99a1af;
+  --color-text-strong: #101828;
+
+  /* Borders / surfaces */
+  --color-border: #e5e7eb;
+  --color-border-light: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f9fafb;
+
+  /* Font */
+  --font-family: 'Exo', sans-serif;
+
+  /* Layout */
+  --container-max: 1536px;
+  --container-padding: 32px;
+
+  /* Promo banner gradients */
+  --color-promo-green-start: #00bc7d;
+  --color-promo-green-end: #007a55;
+  --color-promo-green-text: #009966;
+  --color-promo-orange-start: #ff8904;
+  --color-promo-orange-end: #ff2056;
+  --color-promo-orange-text: #ff6900;
+}

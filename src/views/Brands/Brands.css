@@ -1,0 +1,121 @@
+.brands-page {
+  background: var(--color-surface-muted);
+}
+
+.brands-page__banner {
+  width: 100%;
+  background: linear-gradient(173deg, #7f22fe 0%, #8e51ff 50%, #c27aff 100%);
+}
+
+.brands-page__banner-inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 64px var(--container-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.brands-page__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.brands-page__breadcrumb a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+
+.brands-page__breadcrumb a:hover {
+  color: #fff;
+}
+
+.brands-page__breadcrumb span:not(.brands-page__breadcrumb-current) {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.brands-page__breadcrumb-current {
+  color: #fff;
+}
+
+.brands-page__heading {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.brands-page__heading-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.3), 0px 20px 25px -5px rgba(0, 0, 0, 0.1), 0px 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.brands-page__heading-icon img {
+  width: 37.5px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.brands-page__title {
+  font-size: 36px;
+  line-height: 40px;
+  letter-spacing: -0.9px;
+  color: #fff;
+}
+
+.brands-page__subtitle {
+  margin-top: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.brands-page__container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 32px var(--container-padding) 64px;
+}
+
+.brands-page__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1023px) {
+  .brands-page__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .brands-page__banner-inner {
+    padding: 32px var(--container-padding);
+    gap: 16px;
+  }
+
+  .brands-page__title {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .brands-page__container {
+    padding: 24px var(--container-padding) 48px;
+  }
+
+  .brands-page__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}

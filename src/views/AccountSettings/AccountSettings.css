@@ -1,0 +1,264 @@
+.account-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.account-settings__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.account-settings__title {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.account-settings__subtitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.account-settings__card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: 24px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.account-settings__card--password {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.account-settings__card-section {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.account-settings__card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.account-settings__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+}
+
+.account-settings__card-icon img {
+  width: 30px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.account-settings__card-icon--green {
+  background: var(--color-primary-100);
+}
+
+.account-settings__card-icon--orange {
+  background: #fef3c6;
+}
+
+.account-settings__card-title {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.account-settings__card-subtitle {
+  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.account-settings__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.account-settings__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.account-settings__field label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-heading);
+}
+
+.account-settings__field input {
+  width: 100%;
+  padding: 14px 17px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-heading);
+  background: var(--color-surface);
+}
+
+.account-settings__field input::placeholder {
+  color: rgba(54, 65, 83, 0.5);
+}
+
+.account-settings__field input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.account-settings__password-wrap {
+  position: relative;
+}
+
+.account-settings__password-wrap input {
+  padding-right: 49px;
+}
+
+.account-settings__toggle-visibility {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.account-settings__toggle-visibility img {
+  width: 20px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.account-settings__hint {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.account-settings__actions {
+  padding-top: 16px;
+}
+
+.account-settings__save-btn,
+.account-settings__change-password-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+.account-settings__save-btn img,
+.account-settings__change-password-btn img {
+  width: 20px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.account-settings__save-btn {
+  background: var(--color-primary);
+  box-shadow: 0px 10px 15px -3px rgba(22, 163, 74, 0.25), 0px 4px 6px -4px rgba(22, 163, 74, 0.25);
+}
+
+.account-settings__change-password-btn {
+  background: #e17100;
+  box-shadow: 0px 10px 15px -3px rgba(225, 113, 0, 0.25), 0px 4px 6px -4px rgba(225, 113, 0, 0.25);
+}
+
+.account-settings__info-section {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--color-surface-muted);
+}
+
+.account-settings__info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.account-settings__info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.account-settings__info-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.account-settings__info-value {
+  font-size: 14px;
+  color: var(--color-text-heading);
+}
+
+.account-settings__role-badge {
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: var(--color-primary-100);
+  color: var(--color-primary-dark);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.account-settings__message {
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+.account-settings__message--success {
+  background: #f0fff4;
+  border: 1px solid #b7eb8f;
+  color: #237804;
+}
+
+.account-settings__message--error {
+  background: #fff1f0;
+  border: 1px solid #ffa39e;
+  color: #cf1322;
+}
+
+.account-settings__save-btn:disabled,
+.account-settings__change-password-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+

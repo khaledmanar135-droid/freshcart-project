@@ -1,0 +1,245 @@
+.account-addresses {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+.account-addresses__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.account-addresses__title {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.account-addresses__subtitle {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.account-addresses__add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  background: var(--color-primary);
+  box-shadow: 0px 10px 15px -3px rgba(22, 163, 74, 0.25), 0px 4px 6px -4px rgba(22, 163, 74, 0.25);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.account-addresses__add-btn img {
+  width: 17.5px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.account-addresses__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  min-width: 0;
+}
+
+.account-addresses__card {
+  position: relative;
+  width: 100%;
+  max-width: 584px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 21px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: 16px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px -1px rgba(0, 0, 0, 0.1);
+}
+
+.account-addresses__card-main {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.account-addresses__card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--color-primary-50);
+}
+
+.account-addresses__card-icon img {
+  width: 22.5px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.account-addresses__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.account-addresses__card-title {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.account-addresses__card-detail {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-body);
+}
+
+.account-addresses__card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  padding-top: 8px;
+}
+
+.account-addresses__card-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.account-addresses__card-meta img {
+  width: 15px;
+  height: 12px;
+  object-fit: contain;
+}
+
+.account-addresses__card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.account-addresses__icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-border-light);
+  cursor: pointer;
+}
+
+.account-addresses__icon-btn img {
+  width: 17.5px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.account-addresses__empty {
+  padding: 64px 24px;
+  text-align: center;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: 16px;
+}
+
+@media (max-width: 640px) {
+  .account-addresses__card {
+    flex-direction: column;
+  }
+
+  .account-addresses__card-actions {
+    align-self: flex-end;
+  }
+}
+
+.account-addresses__form {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 16px;
+  margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.account-addresses__form textarea,
+.account-addresses__form button {
+  grid-column: 1 / -1;
+}
+
+.account-addresses__form input,
+.account-addresses__form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.account-addresses__form input:focus,
+.account-addresses__form textarea:focus {
+  outline: 2px solid #16a34a;
+  outline-offset: 1px;
+}
+
+.account-addresses__form button {
+  padding: 10px 16px;
+  font-weight: 600;
+  color: #fff;
+  background: #16a34a;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.account-addresses__form button:disabled { opacity: .6; cursor: not-allowed; }
+
+@media (max-width: 640px) {
+  .account-addresses__form { grid-template-columns: 1fr; }
+}
+
+.account-addresses__empty button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-weight: 600;
+  color: #16a34a;
+  background: transparent;
+  border: 1px solid #16a34a;
+  border-radius: 8px;
+  cursor: pointer;
+}

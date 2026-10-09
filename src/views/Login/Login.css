@@ -1,0 +1,23 @@
+.login-page__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.login-page__container > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .login-page__container {
+    padding: 16px;
+  }
+
+  .login-page__container .login-intro {
+    display: none;
+  }
+}

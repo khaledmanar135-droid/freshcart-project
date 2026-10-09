@@ -1,0 +1,134 @@
+.search-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.search-filters__group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.search-filters__title {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.search-filters__divider {
+  margin: 0;
+  border: none;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.search-filters__scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 208px;
+  overflow-y: auto;
+  padding-right: 15px;
+}
+
+.search-filters__option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-body);
+  cursor: pointer;
+}
+
+.search-filters__option input[type='checkbox'] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin: 0;
+  border: 1px solid #767676;
+  border-radius: 2.5px;
+  background: var(--color-surface);
+  cursor: pointer;
+  position: relative;
+}
+
+.search-filters__option input[type='checkbox']:checked {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.search-filters__option input[type='checkbox']:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.search-filters__price-inputs {
+  display: flex;
+  gap: 12px;
+}
+
+.search-filters__price-field {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.search-filters__price-field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.search-filters__price-field input {
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-heading);
+  background: var(--color-surface);
+}
+
+.search-filters__price-field input::placeholder {
+  color: rgba(54, 65, 83, 0.5);
+}
+
+.search-filters__price-field input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.search-filters__quick-prices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.search-filters__quick-price-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 9999px;
+  background: var(--color-border-light);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-body);
+  cursor: pointer;
+}
+
+.search-filters__quick-price-btn:hover {
+  background: var(--color-border);
+}

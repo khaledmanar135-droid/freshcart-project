@@ -1,0 +1,68 @@
+.signin-prompt {
+  display: flex;
+  justify-content: center;
+  padding: 64px 16px;
+}
+
+.signin-prompt__card {
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+  padding: 32px 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.signin-prompt__title {
+  margin: 0 0 8px;
+  font-family: var(--font-family);
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.signin-prompt__message {
+  margin: 0 0 24px;
+  font-family: var(--font-family);
+  font-size: 15px;
+  color: #6b7280;
+}
+
+.signin-prompt__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.signin-prompt__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 600;
+  color: #111827;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.signin-prompt__btn:hover {
+  background: #f3f4f6;
+}
+
+.signin-prompt__btn--primary {
+  background: var(--color-primary, #16a34a);
+  border-color: var(--color-primary, #16a34a);
+  color: #ffffff;
+}
+
+.signin-prompt__btn--primary:hover {
+  filter: brightness(0.95);
+  background: var(--color-primary, #16a34a);
+}
