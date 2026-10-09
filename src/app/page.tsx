@@ -1,5 +1,5 @@
-import Page from '@/views/Home/Home'
+import HomeScreen from "@/features/home/screens/homescreen";
 
-export default function Route(){
-  return <Page/>
+export default function Home() {
+  return <HomeScreen />;
 }

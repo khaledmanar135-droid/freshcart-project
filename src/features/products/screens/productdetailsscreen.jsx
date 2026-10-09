@@ -12,8 +12,9 @@ import { getProduct, getProducts } from '../server/products.actions';
 import { getProductReviews } from '../server/reviews.actions';
 import { toCardProduct } from '../utils/product.mapper';
 
-export default function ProductDetails() {
-  const { id } = useParams({ strict: false }) || {};
+export default function ProductDetailsScreen({ productId }) {
+  const routeParams = useParams({ strict: false }) || {};
+  const id = productId || routeParams.id;
 
   const { data: product, isLoading, isError } = useQuery({
     queryKey: ['product', id],

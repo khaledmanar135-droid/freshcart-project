@@ -13,9 +13,9 @@ import './categorydetailsscreen.css';
 
 const LIMIT = 12;
 
-export default function CategoryDetails() {
-  const params = useParams() || {};
-  const id = params.id;
+export default function CategoryDetailsScreen({ categoryId }) {
+  const routeParams = useParams() || {};
+  const id = categoryId || routeParams.id;
   const [page, setPage] = useState(1);
 
   const { data: categoryData, isLoading: categoryLoading } = useQuery({
