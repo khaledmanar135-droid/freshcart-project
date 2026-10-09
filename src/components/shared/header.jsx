@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from '@/lib/nextrouter';
 import { useQuery } from '@tanstack/react-query';
-import { useAuth } from '../../context/AuthContext';
-import { useCart } from '../../hooks/useCart';
-import { useWishlist } from '../../hooks/useWishlist';
-import { getCategories } from '../../services/categories';
+import { useAuth } from '@/features/auth/store/auth.context';
+import { useCart } from '@/features/cart/hooks/usecart';
+import { useWishlist } from '@/features/wishlist/hooks/usewishlist';
+import { getCategories } from '@/features/categories/server/categories.actions';
 const logo = '/freshcart/assets/icons/header/logo.svg';
 const searchIcon = '/freshcart/assets/icons/header/search.svg';
 const chevronDownIcon = '/freshcart/assets/icons/header/chevron-down.svg';
@@ -407,4 +407,5 @@ export default function Header() {
     </header>
   );
 }
+
 

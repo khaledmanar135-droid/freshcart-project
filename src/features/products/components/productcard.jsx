@@ -6,8 +6,8 @@ const compareIcon = '/freshcart/assets/icons/product-card/compare.svg';
 const viewIcon = '/freshcart/assets/icons/product-card/view.svg';
 const cartIcon = '/freshcart/assets/icons/product-card/cart.svg';
 import StarRating from '@/components/ui/starrating';
-import { useCart } from '@/hooks/useCart';
-import { useWishlist } from '@/hooks/useWishlist';
+import { useCart } from '@/features/cart/hooks/usecart';
+import { useWishlist } from '@/features/wishlist/hooks/usewishlist';
 
 export default function ProductCard({ product }) {
   const { id, image, title, category, rating, reviews, price, originalPrice, discount } = product;
@@ -92,5 +92,6 @@ export default function ProductCard({ product }) {
     </article>
   );
 }
+
 
 

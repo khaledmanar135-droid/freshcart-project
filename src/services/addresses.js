@@ -1,6 +1,7 @@
 'use server'
-import { request } from './request.action'
-export async function addAddress(data){return request('/addresses',{method:'POST',body:JSON.stringify(data)})}
-export async function removeAddress(id){return request(`/addresses/${id}`,{method:'DELETE'})}
-export async function getAddress(id){return request(`/addresses/${id}`)}
-export async function getAddresses(){return request('/addresses')}
+import * as actions from '@/features/account/server/addresses.actions'
+
+export async function addAddress(data) { return actions.addAddress(data) }
+export async function removeAddress(id) { return actions.removeAddress(id) }
+export async function getAddress(id) { return actions.getAddress(id) }
+export async function getAddresses() { return actions.getAddresses() }

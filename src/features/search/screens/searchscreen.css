@@ -201,7 +201,7 @@
   padding: 9px 29px 9px 17px;
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  background: var(--color-surface) url('../../assets/icons/header/chevron-down.svg') no-repeat right 12px center;
+  background: var(--color-surface) url('../../../assets/icons/header/chevron-down.svg') no-repeat right 12px center;
   background-size: 10px 8px;
   font-family: inherit;
   font-size: 14px;
@@ -348,3 +348,4 @@
     aspect-ratio: 356 / 240;
   }
 }
+

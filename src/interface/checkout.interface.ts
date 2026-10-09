@@ -1,10 +1,1 @@
-export interface CheckOut{
-    city:string,
-    phone:string,
-    details:string
-}
-
-
-export interface CheckOrder extends CheckOut{
-    postalCode:string
-}
+export * from '@/features/checkout/types/checkout.type';

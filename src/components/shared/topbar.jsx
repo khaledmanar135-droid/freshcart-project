@@ -1,7 +1,7 @@
 'use client'
 
 import { Link, useNavigate } from '@/lib/nextrouter';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '@/features/auth/store/auth.context';
 const shippingIcon = '/freshcart/assets/icons/topbar/shipping.svg';
 const newArrivalsIcon = '/freshcart/assets/icons/topbar/new-arrivals.svg';
 const phoneIcon = '/freshcart/assets/icons/topbar/phone.svg';
@@ -76,4 +76,5 @@ export default function TopBar() {
     </div>
   );
 }
+
 

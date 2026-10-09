@@ -1,11 +1,11 @@
 @import './base.css';
-@import '../components/AccountLayout/AccountLayout.css';
+@import '../features/account/components/accountlayout.css';
 @import '../features/brands/components/brandcard.css';
 @import '../features/products/components/productDetails/breadcrumb.css';
-@import '../components/CartItem/CartItem.css';
-@import '../components/CartSummary/CartSummary.css';
+@import '../features/cart/components/cartitem.css';
+@import '../features/cart/components/cartsummary.css';
 @import '../features/home/components/homecategories.css';
-@import '../components/CheckoutSummary/CheckoutSummary.css';
+@import '../features/checkout/components/checkoutsummary.css';
 @import '../components/shared/featuresbar.css';
 @import '../components/shared/footer.css';
 @import '../components/shared/header.css';
@@ -14,9 +14,9 @@
 @import '../features/auth/components/login/loginform.css';
 @import '../features/auth/components/login/loginintro.css';
 @import '../features/home/components/newsletter.css';
-@import '../components/OrderCard/OrderCard.css';
+@import '../features/orders/components/ordercard.css';
 @import '../components/ui/pagination.css';
-@import '../components/PaymentMethodCard/PaymentMethodCard.css';
+@import '../features/checkout/components/paymentmethodcard.css';
 @import '../features/products/components/productcard.css';
 @import '../features/products/components/productDetails/productgallery.css';
 @import '../features/home/components/productgrid.css';
@@ -24,29 +24,30 @@
 @import '../features/products/components/productDetails/producttabs.css';
 @import '../features/home/components/promogrid.css';
 @import '../features/products/components/productDetails/relatedproducts.css';
-@import '../components/SearchFilters/SearchFilters.css';
-@import '../components/ShippingAddressCard/ShippingAddressCard.css';
+@import '../features/search/components/searchfilters.css';
+@import '../features/checkout/components/shippingaddresscard.css';
 @import '../features/auth/components/signinprompt.css';
 @import '../features/auth/components/signup/signupform.css';
 @import '../features/auth/components/signup/signupintro.css';
 @import '../components/ui/starrating.css';
 @import '../components/shared/topbar.css';
 @import '../components/shared/trustbadges.css';
-@import '../components/WishlistRow/WishlistRow.css';
-@import '../views/AccountAddresses/AccountAddresses.css';
-@import '../views/AccountSettings/AccountSettings.css';
+@import '../features/wishlist/components/wishlistrow.css';
+@import '../features/account/screens/accountaddressesscreen.css';
+@import '../features/account/screens/accountsettingsscreen.css';
 @import '../features/products/screens/allproductsscreen.css';
 @import '../features/brands/screens/brandsscreen.css';
-@import '../views/Cart/Cart.css';
+@import '../features/cart/screens/cartscreen.css';
 @import '../features/categories/screens/categoriesscreen.css';
-@import '../views/Checkout/Checkout.css';
+@import '../features/checkout/screens/checkoutscreen.css';
 @import '../features/auth/screens/forgotpasswordscreen.css';
 @import '../features/auth/screens/loginscreen.css';
-@import '../views/Orders/Orders.css';
+@import '../features/orders/screens/ordersscreen.css';
 @import '../features/products/screens/productdetailsscreen.css';
-@import '../views/Search/Search.css';
+@import '../features/search/screens/searchscreen.css';
 @import '../features/auth/screens/signupscreen.css';
-@import '../views/Wishlist/Wishlist.css';
+@import '../features/wishlist/screens/wishlistscreen.css';
+
 
 
 
