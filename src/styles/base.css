@@ -1,0 +1,124 @@
+@import './tokens.css';
+
+/*
+  Self-hosted Exo, replacing the render-blocking fonts.googleapis.com stylesheet.
+  Exo ships as a variable font, so this one 21KB latin file covers every weight
+  the site uses (400/500/600/700) in a single request. unicode-range is copied
+  from Google's own latin block so non-latin text (e.g. the Arabic city names on
+  Orders) still falls through to the system font exactly as before.
+  The file lives in public/fonts/ so index.html can preload it by a stable URL.
+*/
+@font-face {
+  font-family: 'Exo';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/exo-latin-var.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-text-body);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* --- API loading / error states --- */
+@keyframes fc-skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+.product-grid-section__skeleton,
+.all-products__skeleton,
+.search-page__skeleton,
+.categories-page__skeleton,
+.brands-page__skeleton,
+.categories-section__skeleton,
+.product-details__skeleton {
+  background: #e5e7eb;
+  border-radius: 12px;
+  min-height: 320px;
+  animation: fc-skeleton-pulse 1.4s ease-in-out infinite;
+}
+
+.categories-section__skeleton { min-height: 140px; border-radius: 16px; }
+.categories-page__skeleton { min-height: 220px; }
+.brands-page__skeleton { min-height: 180px; }
+.product-details__skeleton--gallery { min-height: 460px; }
+.product-details__skeleton--info { min-height: 460px; }
+
+.product-grid-section__state,
+.all-products__state,
+.categories-page__state,
+.brands-page__state,
+.categories-section__state,
+.search-filters__empty {
+  text-align: center;
+  color: #6b7280;
+  padding: 32px 16px;
+}
+
+.product-grid-section__state button,
+.all-products__state button,
+.categories-page__state button,
+.brands-page__state button,
+.search-page__empty button {
+  margin-top: 12px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: var(--color-primary, #16a34a);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-filters__empty { padding: 8px 0; font-size: 14px; }
+

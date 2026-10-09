@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import './old.css'
-import Providers from './Providers'
+import '../styles/globals.css'
+import Providers from '@/components/providers/providers'
 import TopBar from '@/components/TopBar/TopBar'
 import Header from '@/components/Header/Header'
 import Footer from '@/components/Footer/Footer'
