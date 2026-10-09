@@ -1,7 +1,7 @@
 'use client'
 
-import { Navigate, useLocation } from '@/components/NextRouter';
-import { useAuth } from '../../context/AuthContext';
+import { Navigate, useLocation } from '@/lib/nextrouter';
+import { useAuth } from '../store/auth.context';
 
 /**
  * Wraps a route that requires authentication.
