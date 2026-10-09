@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import '../styles/globals.css'
 import Providers from '@/components/providers/providers'
-import TopBar from '@/components/TopBar/TopBar'
-import Header from '@/components/Header/Header'
-import Footer from '@/components/Footer/Footer'
+import TopBar from '@/components/shared/topbar'
+import Header from '@/components/shared/header'
+import Footer from '@/components/shared/footer'
 import { Toaster } from 'sonner'
 
 export const metadata:Metadata={
