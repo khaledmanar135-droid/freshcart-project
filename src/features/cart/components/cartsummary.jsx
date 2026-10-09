@@ -1,13 +1,15 @@
-'use client'
+'use client';
 
 import { useState } from 'react';
 import { Link } from '@/lib/nextrouter';
+
 const summaryIcon = '/freshcart/assets/icons/cart/order-summary.svg';
 const shippingTruckIcon = '/freshcart/assets/icons/cart/shipping-truck.svg';
 const tagIcon = '/freshcart/assets/icons/cart/tag.svg';
 const lockIcon = '/freshcart/assets/icons/cart/lock.svg';
 const shieldIcon = '/freshcart/assets/icons/cart/shield.svg';
 const deliveryTruckIcon = '/freshcart/assets/icons/cart/delivery-truck.svg';
+
 const FREE_SHIPPING_THRESHOLD = 500;
 
 export default function CartSummary({
@@ -19,6 +21,7 @@ export default function CartSummary({
 }) {
   const [promoOpen, setPromoOpen] = useState(false);
   const [code, setCode] = useState('');
+
   const qualifiesForFreeShipping = subtotal >= FREE_SHIPPING_THRESHOLD;
   const total = totalAfterDiscount ?? subtotal;
 
@@ -89,7 +92,11 @@ export default function CartSummary({
             </button>
           </form>
         ) : (
-          <button type="button" className="cart-summary__promo-btn" onClick={() => setPromoOpen(true)}>
+          <button
+            type="button"
+            className="cart-summary__promo-btn"
+            onClick={() => setPromoOpen(true)}
+          >
             <img src={tagIcon} alt="" />
             Apply Promo Code
           </button>
@@ -112,9 +119,10 @@ export default function CartSummary({
           </span>
         </div>
 
-        <Link to="/" className="cart-summary__continue">← Continue Shopping</Link>
+        <Link to="/" className="cart-summary__continue">
+          ← Continue Shopping
+        </Link>
       </div>
     </div>
   );
 }
-

@@ -39,7 +39,7 @@ export const authOption:NextAuthOptions ={
         })
     ],
     pages:{
-        signIn:'/Login'
+        signIn:'/login'
     },
      
     callbacks:{

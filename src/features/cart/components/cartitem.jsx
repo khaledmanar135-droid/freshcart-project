@@ -1,12 +1,14 @@
-'use client'
+'use client';
 
 import { Link } from '@/lib/nextrouter';
+
 const checkIcon = '/freshcart/assets/icons/cart/check.svg';
 const minusIcon = '/freshcart/assets/icons/cart/minus.svg';
 const plusIcon = '/freshcart/assets/icons/cart/plus.svg';
 const removeIcon = '/freshcart/assets/icons/cart/remove.svg';
+
 export default function CartItem({ item, onIncrease, onDecrease, onRemove }) {
-  const { id, image, title, category, sku, price, quantity, minQuantity = 1 } = item;
+  const { id, image, title, category, sku, price, quantity } = item;
   const lineTotal = price * quantity;
 
   return (
@@ -31,7 +33,9 @@ export default function CartItem({ item, onIncrease, onDecrease, onRemove }) {
 
       <div className="cart-item__body">
         <div className="cart-item__info">
-          <Link to="/products/$id" params={{ id: String(id) }} className="cart-item__title">{title}</Link>
+          <Link to="/products/$id" params={{ id: String(id) }} className="cart-item__title">
+            {title}
+          </Link>
           <div className="cart-item__meta">
             <span className="cart-item__category">{category}</span>
             <span className="cart-item__dot">•</span>
@@ -49,8 +53,8 @@ export default function CartItem({ item, onIncrease, onDecrease, onRemove }) {
             <button
               type="button"
               className="cart-item__step-btn cart-item__step-btn--decrease"
-              onClick={() => onDecrease(id)}
-              disabled={quantity <= minQuantity}
+              onClick={() => onDecrease?.(id)}
+              disabled={quantity <= 1}
               aria-label={`Decrease quantity of ${title}`}
             >
               <img src={minusIcon} alt="" />
@@ -59,7 +63,7 @@ export default function CartItem({ item, onIncrease, onDecrease, onRemove }) {
             <button
               type="button"
               className="cart-item__step-btn cart-item__step-btn--increase"
-              onClick={() => onIncrease(id)}
+              onClick={() => onIncrease?.(id)}
               aria-label={`Increase quantity of ${title}`}
             >
               <img src={plusIcon} alt="" />
@@ -76,7 +80,7 @@ export default function CartItem({ item, onIncrease, onDecrease, onRemove }) {
             <button
               type="button"
               className="cart-item__remove"
-              onClick={() => onRemove(id)}
+              onClick={() => onRemove?.(id)}
               aria-label={`Remove ${title} from cart`}
             >
               <img src={removeIcon} alt="" />
@@ -87,4 +91,3 @@ export default function CartItem({ item, onIncrease, onDecrease, onRemove }) {
     </li>
   );
 }
-

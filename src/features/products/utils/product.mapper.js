@@ -1,6 +1,4 @@
-/**
- * Map a product from the Route API into the shape the UI components expect.
- */
+
 export function toCardProduct(p) {
   if (!p) return null;
   const hasDiscount = typeof p.priceAfterDiscount === 'number' && p.priceAfterDiscount < p.price;

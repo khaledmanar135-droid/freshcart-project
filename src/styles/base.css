@@ -1,13 +1,5 @@
 @import './tokens.css';
 
-/*
-  Self-hosted Exo, replacing the render-blocking fonts.googleapis.com stylesheet.
-  Exo ships as a variable font, so this one 21KB latin file covers every weight
-  the site uses (400/500/600/700) in a single request. unicode-range is copied
-  from Google's own latin block so non-latin text (e.g. the Arabic city names on
-  Orders) still falls through to the system font exactly as before.
-  The file lives in public/fonts/ so index.html can preload it by a stable URL.
-*/
 @font-face {
   font-family: 'Exo';
   font-style: normal;

@@ -345,9 +345,7 @@
   }
 }
 
-/* Pixel-accurate mobile tier (Figma "Home Page - Mobile", node 15:2018, 390px frame).
-   Declared after the 600px tablet-fallback tier so it wins on overlapping
-   properties at widths <= 600px, and is self-contained for the 601-640px range. */
+
 @media (max-width: 640px) {
   .newsletter-signup {
     padding: 64px 16px;

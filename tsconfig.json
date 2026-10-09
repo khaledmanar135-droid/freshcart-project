@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "src/features/contact/screens/ContactScreen.jsx", "src/features/privacy-policy/screens/PrivacyScreen.jsx"  ],
   "exclude": ["node_modules"]
 }

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from '@/lib/nextrouter';
@@ -14,17 +14,24 @@ import {
 } from '../server/cart.actions';
 import { apiMessage } from '@/lib/apimessage';
 
-const EMPTY = { cartId: null, numOfCartItems: 0, items: [], totalCartPrice: 0, totalAfterDiscount: null };
+const EMPTY = {
+  cartId: null,
+  numOfCartItems: 0,
+  items: [],
+  totalCartPrice: 0,
+  totalAfterDiscount: null,
+};
 
 function normalize(payload) {
-  if (!payload) return EMPTY;
-  const cart = payload.data ?? {};
+  if (!payload?.data) return EMPTY;
+  const cart = payload.data;
+
   return {
     cartId: payload.cartId ?? cart._id ?? null,
     numOfCartItems: payload.numOfCartItems ?? cart.products?.length ?? 0,
     totalCartPrice: cart.totalCartPrice ?? 0,
     totalAfterDiscount: cart.totalPriceAfterDiscount ?? null,
-    items: (cart.products ?? []).map((line) => ({
+    items: (cart.products || []).map((line) => ({
       lineId: line._id,
       id: line.product?._id ?? line.product,
       count: line.count,
@@ -53,7 +60,7 @@ export function useCart() {
         return normalize(res.data);
       } catch (error) {
         // "No cart exist" is an empty cart, not an error screen
-        if (error?.response?.status === 404) return EMPTY;
+        if (error?.message?.includes('No cart')) return EMPTY;
         throw error;
       }
     },
@@ -61,15 +68,8 @@ export function useCart() {
 
   const setCart = (payload) => queryClient.setQueryData(['cart'], normalize(payload));
 
-  const requireLogin = () => {
-    if (isLoggedIn) return false;
-    toast.error('Please sign in to use your cart.');
-    navigate({ to: "/login" });
-    return true;
-  };
-
   const add = useMutation({
-    mutationFn: (productId) => addToCart(productId),
+    mutationFn: addToCart,
     onSuccess: (res) => {
       setCart(res.data);
       toast.success('Added to your cart');
@@ -84,7 +84,7 @@ export function useCart() {
   });
 
   const remove = useMutation({
-    mutationFn: (productId) => removeCartItem(productId),
+    mutationFn: removeCartItem,
     onSuccess: (res) => {
       setCart(res.data);
       toast.success('Item removed');
@@ -93,7 +93,7 @@ export function useCart() {
   });
 
   const clear = useMutation({
-    mutationFn: () => clearCart(),
+    mutationFn: clearCart,
     onSuccess: () => {
       queryClient.setQueryData(['cart'], EMPTY);
       toast.success('Cart cleared');
@@ -102,7 +102,7 @@ export function useCart() {
   });
 
   const coupon = useMutation({
-    mutationFn: (code) => applyCoupon(code),
+    mutationFn: applyCoupon,
     onSuccess: (res) => {
       setCart(res.data);
       toast.success('Coupon applied');
@@ -117,7 +117,11 @@ export function useCart() {
     error: query.error,
     refetch: query.refetch,
     addToCart: (productId) => {
-      if (requireLogin()) return;
+      if (!isLoggedIn) {
+        toast.error('Please sign in to use your cart.');
+        navigate({ to: '/login' });
+        return;
+      }
       add.mutate(productId);
     },
     updateQuantity: (productId, count) => update.mutate({ productId, count }),
@@ -132,4 +136,3 @@ export function useCart() {
     isApplyingCoupon: coupon.isPending,
   };
 }
-

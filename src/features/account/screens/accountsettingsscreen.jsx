@@ -2,26 +2,28 @@
 
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/features/auth/store/auth.context';
+import { useSession } from 'next-auth/react'; 
 import { updateMe, updatePassword } from '../server/account.actions';
 import AccountLayout from '../components/accountlayout';
 import TrustBadges from '@/components/shared/trustbadges';
 import SignInPrompt from '@/features/auth/components/signinprompt';
+
 const userIcon = '/freshcart/assets/icons/account/user-green.svg';
 const saveIcon = '/freshcart/assets/icons/account/save.svg';
 const lockOrangeIcon = '/freshcart/assets/icons/account/lock-orange.svg';
 const lockWhiteIcon = '/freshcart/assets/icons/account/lock-white.svg';
 const eyeIcon = '/freshcart/assets/icons/login/eye.svg';
+
 export default function AccountSettings() {
   const { user, userId, token, login, isLoggedIn, sessionChecked } = useAuth();
+  const { update } = useSession(); 
 
-  // Profile form
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [profileMsg, setProfileMsg] = useState({ type: '', text: '' });
   const [savingProfile, setSavingProfile] = useState(false);
 
-  // Password form
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -31,7 +33,6 @@ export default function AccountSettings() {
   const [passwordMsg, setPasswordMsg] = useState({ type: '', text: '' });
   const [savingPassword, setSavingPassword] = useState(false);
 
-  // Populate form from auth context on mount / when user changes
   useEffect(() => {
     if (user) {
       setFullName(user.name || '');
@@ -48,17 +49,17 @@ export default function AccountSettings() {
       const res = await updateMe({ name: fullName, email, phone });
       const updated = res.data?.data;
       if (updated) {
-        // Update context with new user data, keep existing token
         const updatedUser = {
           id: updated._id || userId,
           name: updated.name,
           role: updated.role,
         };
         login(token, updatedUser);
+        await update();
       }
       setProfileMsg({ type: 'success', text: 'Profile updated successfully.' });
     } catch (err) {
-      const message = err.response?.data?.message || 'Failed to update profile.';
+      const message = err.message || 'Failed to update profile.';
       setProfileMsg({ type: 'error', text: message });
     } finally {
       setSavingProfile(false);
@@ -85,7 +86,6 @@ export default function AccountSettings() {
         password: newPassword,
         rePassword: confirmPassword,
       });
-      // The API returns a new token — replace it
       const newToken = res.data?.token;
       if (newToken) {
         const currentUser = res.data?.data || user;
@@ -94,13 +94,15 @@ export default function AccountSettings() {
           name: currentUser.name,
           role: currentUser.role,
         });
+        await update(); 
       }
       setCurrentPassword('');
       setNewPassword('');
       setConfirmPassword('');
       setPasswordMsg({ type: 'success', text: 'Password changed successfully.' });
     } catch (err) {
-      const message = err.response?.data?.message || 'Failed to change password.';
+      
+      const message = err.message || 'Failed to change password.';
       setPasswordMsg({ type: 'error', text: message });
     } finally {
       setSavingPassword(false);
@@ -311,4 +313,3 @@ export default function AccountSettings() {
     </>
   );
 }
-

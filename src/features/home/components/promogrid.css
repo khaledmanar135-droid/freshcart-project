@@ -80,6 +80,7 @@
   font-size: 30px;
   font-weight: 700;
   line-height: 36px;
+  color: #fff ;
 }
 
 .promo-card__description {
@@ -189,7 +190,6 @@
   }
 }
 
-/* Mobile (Figma "Home Page - Mobile", node 15:583, 390px frame) */
 @media (max-width: 640px) {
   .promo-grid__inner {
     flex-direction: column;

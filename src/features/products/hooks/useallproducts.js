@@ -6,10 +6,7 @@ import { toCardProduct } from '../utils/product.mapper';
 
 const PAGE_LIMIT = 50;
 
-/**
- * The store API has no keyword search, so the search page loads the whole
- * catalog once (2 pages of 50) and filters in the browser.
- */
+
 export function useAllProducts() {
   return useQuery({
     queryKey: ['products', 'catalog'],

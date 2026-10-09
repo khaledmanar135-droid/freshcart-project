@@ -27,18 +27,18 @@ export default function ProductInfo({ product }) {
   const decrease = () => setQuantity((q) => Math.max(1, q - 1));
   const increase = () => setQuantity((q) => Math.min(stock || 1, q + 1));
 
-  const handleAddToCart = () => {
-    addToCart(id);
+const handleAddToCart = async () => {
+    await addToCart(id);
+    
     if (quantity > 1) {
-      setTimeout(() => updateQuantity(id, quantity), 600);
+      await updateQuantity(id, quantity);
     }
   };
 
-  const handleBuyNow = () => {
-    handleAddToCart();
-    setTimeout(() => navigate({ to: '/cart' }), 800);
+  const handleBuyNow = async () => {
+    await handleAddToCart();
+    navigate({ to: '/cart' });
   };
-
   return (
     <div className="product-info">
       <div className="product-info__badges">

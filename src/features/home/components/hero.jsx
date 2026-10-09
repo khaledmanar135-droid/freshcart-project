@@ -4,8 +4,7 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 import { Link } from '@/lib/nextrouter';
 const arrowPrev = '/freshcart/assets/icons/hero/arrow-prev.svg';
 const arrowNext = '/freshcart/assets/icons/hero/arrow-next.svg';
-// Each title is written once. `{ br: … }` marks where the line breaks on a
-// given screen size, so screen readers only ever read the headline one time.
+
 const SLIDES = [
   {
     title: 'Fresh Products Delivered to your Door',
@@ -82,12 +81,6 @@ export default function Hero() {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
-        {/*
-          No `src` on purpose: React sets attributes on a detached element, so a
-          `src` alongside `srcSet` starts a second fetch before the candidate is
-          picked. `srcSet` alone resolves to exactly one image, and the preload
-          in index.html uses the same imagesrcset/imagesizes so they agree.
-        */}
         <img
           key={activeSlide}
           srcSet="/hero/hero-mobile.webp 780w, /hero/hero-desktop.webp 1600w"

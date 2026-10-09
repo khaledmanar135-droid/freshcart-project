@@ -1,20 +1,21 @@
-// token
-"use server"
+
+"use server";
 import { decode } from "next-auth/jwt";
 import { cookies } from "next/headers";
 
+export async function getMyToken() {
+  const cookieStore = await cookies();
 
-export async function getMyToken(){
-   
-    
+  const sessionToken =
+    cookieStore.get("__Secure-next-auth.session-token")?.value ||
+    cookieStore.get("next-auth.session-token")?.value;
 
-    const decodedToken = (await cookies()).get('next-auth.session-token')?.value;
-    const token =await decode({
-        token: decodedToken,
-        secret:process.env.NEXTAUTH_SECRET!
-    })
+  if (!sessionToken) return null;
 
+  const token = await decode({
+    token: sessionToken,
+    secret: process.env.NEXTAUTH_SECRET!,
+  });
 
-    return token?.token
-
+  return token?.token;
 }

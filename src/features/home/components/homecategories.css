@@ -129,7 +129,6 @@
   }
 }
 
-/* Mobile (Figma "Home Page - Mobile", node 15:519, 390px frame) */
 @media (max-width: 640px) {
   .categories-section {
     padding: 32px 16px;

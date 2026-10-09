@@ -7,6 +7,7 @@ import ProductCard from '@/features/products/components/productcard';
 import Pagination from '@/components/ui/pagination';
 import TrustBadges from '@/components/shared/trustbadges';
 import { getCategory } from '../server/categories.actions';
+import { getSubCategoriesOnCategory } from '../server/subcategories.actions';
 import { getProducts } from '@/features/products/server/products.actions';
 import { toCardProduct } from '@/features/products/utils/product.mapper';
 import './categorydetailsscreen.css';
@@ -17,6 +18,7 @@ export default function CategoryDetailsScreen({ categoryId }) {
   const routeParams = useParams() || {};
   const id = categoryId || routeParams.id;
   const [page, setPage] = useState(1);
+  const [selectedSubCategory, setSelectedSubCategory] = useState(null);
 
   const { data: categoryData, isLoading: categoryLoading } = useQuery({
     queryKey: ['category', id],
@@ -27,11 +29,24 @@ export default function CategoryDetailsScreen({ categoryId }) {
     },
   });
 
-  const { data: productsData, isLoading: productsLoading, isError, refetch } = useQuery({
-    queryKey: ['products', 'category', id, { page, limit: LIMIT }],
+  const { data: subCategories = [] } = useQuery({
+    queryKey: ['subcategories', id],
     enabled: Boolean(id),
     queryFn: async () => {
-      const res = await getProducts({ category: id, page, limit: LIMIT });
+      const res = await getSubCategoriesOnCategory(id);
+      return res.data?.data ?? [];
+    },
+  });
+
+  const { data: productsData, isLoading: productsLoading, isError, refetch } = useQuery({
+    queryKey: ['products', 'category', id, { page, limit: LIMIT, subcategory: selectedSubCategory }],
+    enabled: Boolean(id),
+    queryFn: async () => {
+      const params = { category: id, page, limit: LIMIT };
+      if (selectedSubCategory) {
+        params.subcategory = selectedSubCategory;
+      }
+      const res = await getProducts(params);
       return {
         products: (res.data?.data ?? []).map(toCardProduct),
         totalPages: res.data?.metadata?.numberOfPages ?? 1,
@@ -72,6 +87,55 @@ export default function CategoryDetailsScreen({ categoryId }) {
           </p>
         </div>
       </div>
+
+      {subCategories.length > 0 && (
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', margin: '20px 0' }}>
+          <button
+            type="button"
+            onClick={() => {
+              setSelectedSubCategory(null);
+              setPage(1);
+            }}
+            style={{
+              padding: '8px 18px',
+              borderRadius: '20px',
+              border: '1px solid #16a34a',
+              background: !selectedSubCategory ? '#16a34a' : 'transparent',
+              color: !selectedSubCategory ? '#ffffff' : '#16a34a',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+            }}
+          >
+            All Subcategories
+          </button>
+          {subCategories.map((sub) => {
+            const isSelected = selectedSubCategory === sub._id;
+            return (
+              <button
+                key={sub._id}
+                type="button"
+                onClick={() => {
+                  setSelectedSubCategory(sub._id);
+                  setPage(1);
+                }}
+                style={{
+                  padding: '8px 18px',
+                  borderRadius: '20px',
+                  border: '1px solid #16a34a',
+                  background: isSelected ? '#16a34a' : 'transparent',
+                  color: isSelected ? '#ffffff' : '#16a34a',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                }}
+              >
+                {sub.name}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       <p className="category-details__count">
         {productsLoading ? 'Loading products...' : `Showing ${products.length} of ${resultsCount} products`}
@@ -122,4 +186,3 @@ export default function CategoryDetailsScreen({ categoryId }) {
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { Link } from '@/lib/nextrouter';
 import CartItem from '../components/cartitem';
@@ -6,9 +6,11 @@ import CartSummary from '../components/cartsummary';
 import TrustBadges from '@/components/shared/trustbadges';
 import { useCart } from '../hooks/usecart';
 import { useAuth } from '@/features/auth/store/auth.context';
+
 const cartBagIcon = '/freshcart/assets/icons/cart/cart-bag.svg';
 const clearAllIcon = '/freshcart/assets/icons/cart/clear-all.svg';
-export default function Cart() {
+
+export default function CartScreen() {
   const { isLoggedIn } = useAuth();
   const {
     cart,
@@ -51,19 +53,28 @@ export default function Cart() {
           {!isLoggedIn ? (
             <div className="cart-page__empty">
               <p>Please sign in to see your cart.</p>
-              <Link to="/login" className="cart-page__continue">Sign in</Link>
+              <Link to="/login" className="cart-page__continue">
+                Sign in
+              </Link>
             </div>
           ) : isLoading ? (
-            <div className="cart-page__empty"><p>Loading your cart…</p></div>
+            <div className="cart-page__empty">
+              <p>Loading your cart…</p>
+            </div>
           ) : isError ? (
             <div className="cart-page__empty">
-              <p>We couldn't load your cart.</p>
-              <button type="button" onClick={() => refetch()}>Try again</button>
+              <p>We couldn&apos;t load your cart.</p>
+              <button type="button" onClick={() => refetch()}>
+                Try again
+              </button>
             </div>
           ) : items.length > 0 ? (
             <div className="cart-page__grid">
               <div className="cart-page__items">
-                <ul className="cart-page__list" style={isUpdating ? { opacity: 0.7 } : undefined}>
+                <ul
+                  className="cart-page__list"
+                  style={isUpdating ? { opacity: 0.7 } : undefined}
+                >
                   {items.map((item) => (
                     <CartItem
                       key={item.lineId}
@@ -75,7 +86,6 @@ export default function Cart() {
                         sku: item.id.slice(-6).toUpperCase(),
                         price: item.price,
                         quantity: item.count,
-                        minQuantity: 1,
                       }}
                       onIncrease={(id) => updateQuantity(id, item.count + 1)}
                       onDecrease={(id) => updateQuantity(id, Math.max(1, item.count - 1))}
@@ -85,7 +95,9 @@ export default function Cart() {
                 </ul>
 
                 <div className="cart-page__actions-bar">
-                  <Link to="/" className="cart-page__continue">← Continue Shopping</Link>
+                  <Link to="/" className="cart-page__continue">
+                    ← Continue Shopping
+                  </Link>
                   <button type="button" className="cart-page__clear" onClick={clearCart}>
                     <img src={clearAllIcon} alt="" />
                     Clear all items
@@ -106,7 +118,9 @@ export default function Cart() {
           ) : (
             <div className="cart-page__empty">
               <p>Your cart is empty.</p>
-              <Link to="/" className="cart-page__continue">← Continue Shopping</Link>
+              <Link to="/" className="cart-page__continue">
+                ← Continue Shopping
+              </Link>
             </div>
           )}
         </div>
@@ -116,4 +130,3 @@ export default function Cart() {
     </>
   );
 }
-

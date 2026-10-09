@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Link, useNavigate } from '@/lib/nextrouter';
+import { toast } from 'sonner';
 import { useAuth } from '../store/auth.context';
 import { forgotPassword, verifyResetCode, resetPassword } from '../server/auth.actions';
 import FeaturesBar from '@/components/shared/featuresbar';
@@ -77,7 +78,6 @@ export default function ForgotPassword() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { login } = useAuth();
   const navigate = useNavigate();
 
   const clearError = () => setError('');
@@ -90,7 +90,7 @@ export default function ForgotPassword() {
       await forgotPassword({ email });
       setStep(2);
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to send reset email. Please try again.');
+      setError(err.message || 'Failed to send reset email. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -104,7 +104,7 @@ export default function ForgotPassword() {
       await verifyResetCode({ resetCode });
       setStep(3);
     } catch (err) {
-      setError(err.response?.data?.message || 'Invalid or expired code. Please try again.');
+      setError(err.message || 'Invalid or expired code. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -116,7 +116,7 @@ export default function ForgotPassword() {
     try {
       await forgotPassword({ email });
     } catch (err) {
-      setError(err.response?.data?.message || 'Could not resend the code. Please try again.');
+      setError(err.message || 'Could not resend the code. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -135,16 +135,11 @@ export default function ForgotPassword() {
     clearError();
     setLoading(true);
     try {
-      const res = await resetPassword({ email, newPassword });
-      const { token, user } = res.data;
-      if (token && user) {
-        login(token, { id: user._id, name: user.name, role: user.role });
-        navigate({ to: '/', replace: true });
-      } else {
-        navigate({ to: '/login', replace: true });
-      }
+      await resetPassword({ email, newPassword });
+      toast.success('Password reset successfully! Please sign in with your new password.');
+      navigate({ to: '/login', replace: true });
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to reset password. Please try again.');
+      setError(err.message || 'Failed to reset password. Please try again.');
     } finally {
       setLoading(false);
     }
