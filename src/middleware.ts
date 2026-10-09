@@ -2,11 +2,12 @@ import { getToken } from 'next-auth/jwt';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function middleware(request: NextRequest) {
-  const token = await getToken({
-    req: request,
-    secret: process.env.NEXTAUTH_SECRET,
-    secureCookie: process.env.NODE_ENV === 'production',
-  });
+  const secret = process.env.NEXTAUTH_SECRET;
+
+  const token =
+    (await getToken({ req: request, secret })) ||
+    (await getToken({ req: request, secret, secureCookie: false })) ||
+    (await getToken({ req: request, secret, secureCookie: true }));
 
   const pathname = request.nextUrl.pathname;
 
@@ -17,7 +18,9 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const protectedRoutes = ['/cart', '/wishlist', '/checkout', '/orders', '/account'];
+  // /checkout, /orders, /account require active authentication
+  // Note: /cart and /wishlist handle their own sign-in prompts in-page and do not hard-redirect
+  const protectedRoutes = ['/checkout', '/orders', '/account'];
   const isProtected = protectedRoutes.some((route) => pathname.startsWith(route));
 
   if (!token && isProtected) {
@@ -31,10 +34,8 @@ export const config = {
   matcher: [
     '/login',
     '/register',
-    '/cart',
-    '/wishlist',
     '/checkout',
     '/orders/:path*',
     '/account/:path*',
-],
+  ],
 };
